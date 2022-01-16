@@ -16,12 +16,10 @@ const fiatOptions = [
 
 function App() {
   const [amount, setAmount] = useState(1);
-  const [result, setResult] = useState(1);
   const [selectedCrypto, setSelectedCrypto] = useState(cryptoOptions[0]);
   const [selectedFiat, setSelectedFiat] = useState(fiatOptions[0]);
 
   const [selectedCryptoData, setSelectedCryptoData] = useState({});
-  const [selectedFiatData, setSelectedFiatData] = useState({})
 
   const[isInitialCrypto, setIsInitialCrypto] = useState(true);
 
@@ -49,41 +47,48 @@ function App() {
   };
 
   return (
-    <div>
-      <button onClick={() => setIsInitialCrypto(!isInitialCrypto)}>
-        Change
-      </button>
+    <div className='root'>
+      <div className = 'container'>
+          <img src={require("./swap.png")} onClick={() => setIsInitialCrypto(!isInitialCrypto)} />
+          <div className='selectContainer'>
+            <Select
+            className="basic-single"
+            classNamePrefix="select"
+            isSearchable
+            defaultValue={isInitialCrypto ? cryptoOptions[0] : fiatOptions[0]}
+            onChange={isInitialCrypto ? (e) => onChangeCrypto(e) : (e) => onChangeFiat(e)}
+            options={isInitialCrypto ? cryptoOptions : fiatOptions}
+            value={isInitialCrypto ? selectedCrypto : selectedFiat}
+            />
+            <Select
+              className="basic-single"
+              classNamePrefix="select"
+              isSearchable
+              defaultValue={!isInitialCrypto ? cryptoOptions[0] : fiatOptions[0]}
+              onChange={!isInitialCrypto ? (e) => onChangeCrypto(e) : (e) => onChangeFiat(e)}
+              options={!isInitialCrypto ? cryptoOptions : fiatOptions}
+              value={!isInitialCrypto ? selectedCrypto : selectedFiat}
+            />
+          </div>
+          
 
-      <Select
-        className="basic-single"
-        classNamePrefix="select"
-        isSearchable
-        defaultValue={isInitialCrypto ? cryptoOptions[0] : fiatOptions[0]}
-        onChange={isInitialCrypto ? (e) => onChangeCrypto(e) : (e) => onChangeFiat(e)}
-        options={isInitialCrypto ? cryptoOptions : fiatOptions}
-        value={isInitialCrypto ? selectedCrypto : selectedFiat}
-      />
-      <Select
-        className="basic-single"
-        classNamePrefix="select"
-        isSearchable
-        defaultValue={!isInitialCrypto ? cryptoOptions[0] : fiatOptions[0]}
-        onChange={!isInitialCrypto ? (e) => onChangeCrypto(e) : (e) => onChangeFiat(e)}
-        options={!isInitialCrypto ? cryptoOptions : fiatOptions}
-        value={!isInitialCrypto ? selectedCrypto : selectedFiat}
-      />
+          <form className='inputContainer'>
+            <label>Enter your amount: 
+              <input
+                className='input'
+                type="text" 
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </label>
+          </form>
 
-      <form>
-        <label>Enter your amount 
-          <input
-            type="text" 
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-        </label>
-      </form>
-
-      {calcResult()}
+          <div className='result'>
+            {calcResult()}
+          </div>
+      </div>
+      
+      
     </div>
   );
 }

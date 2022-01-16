@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/crypto-exchanger/static/css/main.f81610bc.css",
+    "main.js": "/crypto-exchanger/static/js/main.a245b88d.js",
+    "static/js/787.ec72f373.chunk.js": "/crypto-exchanger/static/js/787.ec72f373.chunk.js",
+    "static/media/swap.png": "/crypto-exchanger/static/media/swap.6a70a460f6296c9ccb4a.png",
+    "index.html": "/crypto-exchanger/index.html",
+    "main.f81610bc.css.map": "/crypto-exchanger/static/css/main.f81610bc.css.map",
+    "main.a245b88d.js.map": "/crypto-exchanger/static/js/main.a245b88d.js.map",
+    "787.ec72f373.chunk.js.map": "/crypto-exchanger/static/js/787.ec72f373.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f81610bc.css",
+    "static/js/main.a245b88d.js"
+  ]
+}
